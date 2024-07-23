@@ -43,8 +43,10 @@ class NotificationController extends Controller
             }
         }
 
+        $dataArray = $this->convertToArray($data);
+
         // Валидация структуры данных
-        $validator = Validator::make($dataIsStdClass ? (array) $data : $data, [
+        $validator = Validator::make( $dataArray, [
             'reports' => 'required|array',
             'reports.*.frames' => 'required|array',
             'reports.*.detections' => 'required|array',

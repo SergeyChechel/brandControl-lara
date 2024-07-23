@@ -9,6 +9,22 @@ use Illuminate\Support\Facades\Mail;
 
 trait HelperFunctionsTrait {
 
+    function convertToArray($data)
+    {
+        if (is_object($data)) {
+            $data = (array) $data;
+        }
+        if (is_array($data)) {
+            $new = [];
+            foreach ($data as $key => $value) {
+                $new[$key] = $this->convertToArray($value);
+            }
+        } else {
+            $new = $data;
+        }
+        return $new;
+    }
+
     function getUserIP() {
         // Default to the connecting IP
         $ip = $_SERVER['REMOTE_ADDR'];
