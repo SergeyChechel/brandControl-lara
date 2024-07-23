@@ -28,7 +28,6 @@ class DemandController extends Controller
 
         if ($request->session()->has('sid') &&
             $request->session()->has('ua') && $request->session()->has('ip')) {
-
             $validator = Validator::make($request->all(), [
                 'q' => 'required|string',
             ]);

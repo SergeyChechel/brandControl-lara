@@ -58,6 +58,7 @@ class NotificationController extends Controller
             return response()->json(['error' => 'Invalid data structure', 'messages' => $validator->messages()], 400);
         }
 
+        date_default_timezone_set(config('brandControl.timezone'));
         $time = '[' . date('d.m.Y H:i') . '] ';
         $log_message = $time . ($dataIsStdClass ? json_encode($data, JSON_PRETTY_PRINT) : $response) . "\r\n";
         $logPath = storage_path('logs/adsecure_notification.log');
@@ -103,6 +104,8 @@ class NotificationController extends Controller
 
         $landing_domain = $this->extractDomainFromUrl($landing_url);
         if ($q_domain !== $landing_domain) $alert .= '2';
+
+        $alert .= '12';
 
         $emailTo = Config::get('brandControl.email_to');
         $adSecureLink = Config::get('brandControl.ad_secure_link');

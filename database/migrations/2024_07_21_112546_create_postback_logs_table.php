@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('notification_id')->constrained('compliance_notifications');
-            $table->text('json_data');
+            $table->longText('json_data');
             $table->timestamp('received_date')->default(now());
 
             $table->timestamps();
