@@ -101,11 +101,8 @@ class NotificationController extends Controller
             $alert .= '1';
         }
 
-
         $landing_domain = $this->extractDomainFromUrl($landing_url);
         if ($q_domain !== $landing_domain) $alert .= '2';
-
-        $alert .= '12';
 
         $emailTo = Config::get('brandControl.email_to');
         $adSecureLink = Config::get('brandControl.ad_secure_link');
