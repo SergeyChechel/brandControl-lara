@@ -15,7 +15,7 @@ class ScanController extends Controller
 
     public function index(Request $request)
     {
-//        date_default_timezone_set(config('brandControl.timezone'));
+        date_default_timezone_set(config('brandControl.timezone'));
         $data = '[' . date('d.m.Y H:i') . '] ' . 'триггер URL с GET параметрами: ' . $request->fullUrl();
 
         $logPath = storage_path('logs/scan_triggers.log');
